@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRUMAQ - Soluções Completas em Informática</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #2D2D2D;
+            --primary-dark-rgb: 45, 45, 45; 
+            --primary-blue: #2A77AB; 
+            --primary-blue-rgb: 42, 119, 171; 
+            --accent-blue: #006C83; 
+            --accent-blue-rgb: 0, 108, 131; 
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef; 
+            --text-dark: #2D2D2D;
+            --text-light: #6c757d;
+            --text-on-dark: #f0f0f0; 
+            --text-on-dark-strong: #ffffff; 
+
+            --hero-feature-box-bg: #303947; 
+            --hero-feature-box-border: #404A57; 
+        }
+
+        html {
+            scroll-behavior: smooth; 
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden; 
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block; 
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header STYLES */
+        #main-header {
+            background: linear-gradient(135deg, rgba(var(--primary-dark-rgb), 0.95) 0%, rgba(var(--accent-blue-rgb), 0.95) 100%);
+            backdrop-filter: blur(5px); 
+            -webkit-backdrop-filter: blur(5px);
+            color: var(--text-on-dark);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background 0.4s ease-out, box-shadow 0.4s ease-out;
+        }
+
+        #main-header.scrolled {
+            background: rgba(var(--primary-dark-rgb), 0.92); 
+            backdrop-filter: blur(8px); 
+            -webkit-backdrop-filter: blur(8px); 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        #main-header nav { 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        
+        #main-header .logo {
+            display: flex; 
+            align-items: center;
+            text-decoration: none;
+            height: 100%; 
+        }
+        #main-header .logo img {
+            max-height: 40px; /* <<< MODIFICADO: Tamanho da logo do header diminuído */
+        }
+
+
+        #main-header .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.2rem;
+            align-items: center;
+        }
+
+        #main-header .nav-menu a {
+            color: var(--text-on-dark); 
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease, opacity 0.3s ease;
+            font-size: 0.95rem;
+            position: relative;
+            padding-bottom: 5px;
+            opacity: 0.85;
+        }
+        #main-header .nav-menu a::after{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0; 
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-blue); 
+            transition: width 0.3s ease-in-out;
+        }
+        #main-header .nav-menu a:hover, #main-header .nav-menu a.active {
+            color: var(--white); 
+            opacity: 1;
+        }
+        #main-header .nav-menu a:hover::after, #main-header .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        #main-header .nav-cta {
+            display: inline-flex;    
+            align-items: center;      
+            justify-content: center;  
+            background: var(--primary-blue); 
+            color: var(--text-on-dark-strong) !important; 
+            border: 1.5px solid var(--primary-blue); 
+            padding: 11px 24px 9px; 
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem !important;
+            box-shadow: 0 4px 10px rgba(var(--primary-dark-rgb), 0.25); 
+            text-decoration: none; 
+            line-height: normal; 
+            text-align: center; 
+            white-space: nowrap;
+        }
+        #main-header .nav-cta:hover {
+            background: var(--accent-blue); 
+            border-color: var(--accent-blue); 
+            color: var(--text-on-dark-strong) !important; 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(var(--accent-blue-rgb), 0.3); 
+        }
+        #main-header .nav-cta::after { display: none !important; }
+
+
+        #main-header .mobile-menu-icon {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--text-on-dark-strong); 
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* GRID PATTERN FOR DARK SECTIONS */
+        #contact, footer { 
+            position: relative;
+            overflow: hidden; 
+        }
+
+        #contact::before, 
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 10 10"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(var(--primary-blue-rgb),0.08)" stroke-width="0.8"/></svg>');
+            z-index: 0; 
+        }
+
+        #hero > .container,
+        #contact > .container, 
+        footer > .container,
+        #about > .container > .about-content-wrapper, 
+        #about > .container > .stats {   
+             position: relative; 
+             z-index: 1; 
+        }
+
+
+        /* Hero Section */
+        .hero {
+            background: var(--primary-dark); 
+            color: var(--text-on-dark);
+            padding: 160px 0 100px; 
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); 
+            gap: 3rem; 
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem; 
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.25;
+            color: var(--primary-blue); 
+        }
+
+        .hero-text p {
+            font-size: 1.1rem; 
+            margin-bottom: 2.5rem;
+            opacity: 0.85;
+            line-height: 1.8;
+        }
+
+        .hero-buttons .hero-cta { 
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 16px 40px; 
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(var(--primary-blue-rgb), 0.35);
+            margin-right: 1rem;
+            display: inline-block; 
+        }
+        .hero-buttons .hero-cta:hover {
+            background: var(--accent-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 25px rgba(var(--accent-blue-rgb), 0.4);
+        }
+
+        .hero-buttons .hero-secondary {
+            display: inline-block;
+            border: 2px solid var(--primary-blue); 
+            color: var(--primary-blue); 
+            padding: 14px 38px; 
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .hero-buttons .hero-secondary:hover {
+            background: var(--primary-blue);
+            color: var(--white); 
+        }
+
+        .hero-visual {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem; 
+        }
+
+        .feature-box {
+            background-color: var(--hero-feature-box-bg); 
+            padding: 1.8rem; 
+            border-radius: 10px; 
+            text-align: center;
+            border: 1px solid var(--hero-feature-box-border); 
+            transition: all 0.3s ease;
+        }
+        .feature-box:hover {
+            background-color: #384250; 
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
+        }
+
+        .feature-icon {
+            font-size: 2.2rem; 
+            margin-bottom: 1rem;
+            color: var(--primary-blue); 
+        }
+
+        .feature-box h3 {
+            font-size: 1rem; 
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .feature-box p {
+            font-size: 0.85rem; 
+            opacity: 0.7; 
+            line-height: 1.5;
+            color: var(--text-on-dark); 
+        }
+
+        /* Sections Base Styling */
+        .section {
+            padding: 80px 0; 
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem; 
+        }
+        .section-title h2 { 
+            font-size: 2.3rem; 
+            font-weight: 700;
+            color: var(--text-dark); 
+            margin-bottom: 0.8rem; 
+        }
+        .section-title p {
+            font-size: 1.1rem; 
+            color: var(--text-light);
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--light-gray); 
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 1.8rem; 
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem; 
+            border-radius: 10px;
+            border: 1px solid var(--medium-gray);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .service-card:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(var(--primary-blue-rgb), 0.1);
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem; 
+        }
+
+        .service-icon {
+            width: 50px; 
+            height: 50px; 
+            background: var(--primary-blue);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem; 
+            color: var(--white);
+            margin-right: 1rem;
+            flex-shrink: 0; 
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem; 
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 0.9rem; 
+        }
+
+        /* About Section */
+        .about {
+            background: var(--white); 
+        }
+
+        .about-content-wrapper { 
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 3rem; 
+            align-items: flex-start; 
+        }
+        .about-text h2 { 
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: var(--text-dark); 
+            margin-bottom: 1.5rem;
+        }
+        .about-text p {
+            font-size: 1rem; 
+            color: var(--text-light); 
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-visual {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 1.5rem; 
+        }
+        .about-card {
+            background: var(--white); 
+            padding: 2rem;  
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid var(--medium-gray); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .about-card:hover{
+            transform: translateY(-5px); 
+            box-shadow: 0 8px 25px rgba(var(--primary-dark-rgb), 0.08); 
+        }
+        .about-card-icon {
+            font-size: 2.2rem; 
+            color: var(--primary-blue); 
+            margin-bottom: 1rem;
+        }
+        .about-card h4 {
+            font-size: 1.05rem; 
+            font-weight: 600;
+            color: var(--text-dark); 
+            margin-bottom: 0.5rem;
+        }
+        .about-card p {
+            font-size: 0.85rem; 
+            color: var(--text-light); 
+        }
+        
+        .stats { 
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 1.5rem; 
+            margin-top: 3.5rem; 
+        }
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem; 
+            background: var(--primary-blue); 
+            border-radius: 8px;
+            border: 1px solid var(--accent-blue); 
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .stat-item:hover {
+            background: var(--accent-blue); 
+            box-shadow: 0 6px 20px rgba(var(--primary-dark-rgb), 0.15); 
+            border-color: var(--accent-blue); 
+        }
+        .stat-number {
+            font-size: 1.8rem; 
+            font-weight: 700;
+            color: var(--text-on-dark-strong); 
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+        .stat-label {
+            color: var(--text-on-dark); 
+            font-weight: 500;
+            font-size: 0.85rem; 
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--primary-dark); 
+            color: var(--text-on-dark);
+        }
+        .contact .section-title h2 { 
+            color: var(--primary-blue); 
+        }
+        .contact .section-title p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Desktop: Duas Colunas */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr; 
+            gap: 3rem;
+            align-items: stretch; 
+        }
+        
+        .contact-info-block { 
+            display: flex; 
+            flex-direction: column;
+        }
+
+        .contact-main-title, 
+        .location-title {    
+            font-size: 1.6rem; 
+            font-weight: 700;
+            color: var(--white); 
+            margin-bottom: 1rem; 
+        }
+        .contact-main-title { 
+             margin-bottom: 0.8rem; 
+        }
+        .location-title { 
+            margin-top: 1.5rem; 
+        }
+
+        .contact-info-block p.intro { 
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 1rem; 
+            line-height: 1.8;
+        }
+        
+        .contact-info-block .map-container {
+            border-radius: 8px;
+            overflow: hidden; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            flex-grow: 1; 
+            display: flex; 
+            min-height: 300px; 
+        }
+        .contact-info-block .map-container iframe {
+            width: 100%;
+            height: 100%; 
+            border: 0;
+            display: block; 
+        }
+
+
+        .contact-form { 
+            background: rgba(255, 255, 255, 0.05); 
+            padding: 2.5rem; 
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .form-group {
+            margin-bottom: 1.2rem; 
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-on-dark);
+            font-size: 0.9rem;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+            background: rgba(255,255,255,0.1); 
+            color: var(--white);
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            background: rgba(255,255,255,0.15);
+        }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 12px 28px; 
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(var(--primary-blue-rgb), 0.25);
+        }
+        .submit-btn:hover {
+            background: var(--accent-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(var(--accent-blue-rgb), 0.3);
+        }
+
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark); 
+            color: rgba(255,255,255,0.7); 
+            text-align: center; 
+            padding: 2.5rem 0; 
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+        footer .footer-logo {
+            display: block;
+            margin: 0 auto 1.5rem auto; 
+            max-height: 35px; /* <<< MODIFICADO: Tamanho da logo do footer diminuído */
+        }
+        
+        .footer-contact-cards-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 1.5rem;
+            margin: 2rem auto; 
+        }
+        .footer-contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem 1rem; 
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center; 
+            color: var(--text-on-dark);
+            display: flex; 
+            flex-direction: column;
+            justify-content: center;
+            min-height: 160px; 
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .footer-contact-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        .footer-contact-card i.main-icon { 
+            font-size: 1.8rem; 
+            color: var(--primary-blue);
+            margin-bottom: 1rem; 
+            display: block; 
+        }
+        .footer-contact-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.6rem; 
+        }
+        .footer-contact-card p {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            word-break: break-word; 
+        }
+        .footer-contact-card a {
+            color: var(--text-on-dark);
+            text-decoration: none;
+        }
+        .footer-contact-card a:hover {
+            color: var(--primary-blue);
+            text-decoration: underline;
+        }
+        .footer-contact-card .social-links {
+            margin-top: 0.5rem; 
+        }
+        .footer-contact-card .social-links a {
+            color: var(--text-on-dark);
+            font-size: 1.8rem; 
+            margin: 0 0.7rem; 
+            transition: color 0.3s ease;
+            display: inline-block; 
+        }
+         .footer-contact-card .social-links a:hover {
+            color: var(--primary-blue);
+            text-decoration: none; 
+        }
+
+
+        footer .copyright-text { 
+            margin-top: 1.5rem;
+        }
+        footer .copyright-text a { 
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        footer .copyright-text a:hover {
+            color: var(--accent-blue);
+            text-decoration: underline;
+        }
+        footer .footer-cnpj {
+            margin-top: 0.8rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) { 
+             .footer-contact-cards-container {
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 1rem;
+            }
+            .contact-content { 
+                display: flex; 
+                flex-direction: column;
+                gap: 2.5rem; 
+            }
+            .contact-info-block { 
+                order: 2; 
+                text-align: center; 
+            }
+            .contact-info-block .contact-main-title,
+            .contact-info-block p.intro {
+                display: none; 
+            }
+            .contact-info-block .location-title {
+                 margin-top: 0; 
+            }
+            .contact-info-block .map-container { 
+                 min-height: 250px; 
+                 height: 300px; 
+                 flex-grow: 0; 
+            }
+            .contact-form {
+                order: 1; 
+                max-width: none; 
+                margin-bottom: 0; 
+            }
+            
+            .about-text { 
+                text-align: center; 
+            }
+            .about-content-wrapper { 
+                grid-template-columns: 1fr; 
+            }
+            .about-visual { 
+                margin-top: 2.5rem; 
+                grid-template-columns: repeat(2, 1fr); 
+            }
+            .stats {
+                grid-template-columns: repeat(2, 1fr); 
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .hero-text {
+                text-align: center;
+            }
+            .hero-visual { order: -1; margin-bottom: 2rem; } 
+        }
+
+        @media (max-width: 768px) { 
+            .footer-contact-cards-container {
+                grid-template-columns: 1fr; 
+                max-width: 350px; 
+            }
+            
+            #main-header .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px; 
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, rgba(var(--primary-dark-rgb),0.98) 0%, rgba(var(--accent-blue-rgb),0.98) 100%);
+                backdrop-filter: blur(5px);
+                -webkit-backdrop-filter: blur(5px);
+                padding: 1rem 0;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                gap: 0; 
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+            #main-header .nav-menu.active {
+                display: flex;
+            }
+            #main-header .nav-menu li {
+                width: 100%;
+                text-align: center;
+            }
+            #main-header .nav-menu a { 
+                display: block;
+                padding: 1rem;
+                width: 100%;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                color: var(--text-on-dark);
+                opacity: 0.9;
+            }
+             #main-header .nav-menu a::after { display: none; } 
+            #main-header .nav-menu li:last-child a { border-bottom: none; }
+            
+            #main-header .nav-menu .nav-cta { 
+                margin: 1rem auto;
+                display: inline-block; 
+                width: auto; 
+                background: var(--primary-blue); 
+                color: var(--white) !important;
+                border-color: transparent;
+            }
+             #main-header .nav-menu .nav-cta:hover{
+                 background: var(--accent-blue);
+             }
+
+
+            #main-header .mobile-menu-icon {
+                display: block;
+            }
+
+            .hero { padding: 120px 0 60px; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .hero-text p { font-size: 1rem; }
+            .hero-buttons .hero-cta, .hero-buttons .hero-secondary {
+                display: block;
+                margin-bottom: 1rem;
+                width: 100%;
+                max-width: 350px; 
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-visual { grid-template-columns: 1fr; } 
+
+            .section { padding: 60px 0; }
+            .section-title h2 { font-size: 2rem; }
+            .section-title p { font-size: 1rem; }
+            
+            .services-grid { grid-template-columns: 1fr; }
+            .about-content-wrapper { 
+                grid-template-columns: 1fr;
+            }
+            .about-visual {
+                 grid-template-columns: 1fr; 
+            }
+            .stats { 
+                grid-template-columns: repeat(2, 1fr); 
+            } 
+        }
+        @media (max-width: 576px) { 
+            .stats {
+                grid-template-columns: 1fr; 
+            }
+            .contact-info-block .map-container iframe { 
+                 height: 250px; 
+            }
+            .contact-info-block .map-container {
+                min-height: 250px; 
+            }
+            .contact-info-block { 
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <nav class="container"> 
+            <a href="#home" class="logo">
+                <img src="./logo.png" alt="Logo BRUMAQ">
+            </a>
+            <ul class="nav-menu" id="nav-menu-list">
+                <li><a href="#home" class="nav-link active">Início</a></li>
+                <li><a href="#services" class="nav-link">Serviços</a></li>
+                <li><a href="#about" class="nav-link">Sobre</a></li>
+                <li><a href="#contact" class="nav-link">Contato</a></li>
+                <li><a href="#contact" class="nav-cta">Solicite um Orçamento</a></li>
+            </ul>
+            <button class="mobile-menu-icon" id="mobile-menu-toggler" aria-label="Abrir menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Tecnologia que Impulsiona Seu Negócio ao Próximo Nível.</h1>
+                        <p>Transformamos sua empresa com tecnologia de ponta. Sistemas especializados, equipamentos de qualidade e suporte técnico dedicado para impulsionar seu negócio ao próximo nível.</p>
+                        <div class="hero-buttons">
+                            <a href="#contact" class="hero-cta">Solicite um Orçamento</a>
+                            <a href="#services" class="hero-secondary">Conheça Nossos Serviços</a>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="feature-box">
+                            <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+                            <h3>Sistemas Especializados</h3>
+                            <p>Soluções de software personalizadas para cada segmento</p>
+                        </div>
+                        <div class="feature-box">
+                            <div class="feature-icon"><i class="fas fa-tools"></i></div>
+                            <h3>Manutenção Completa</h3>
+                            <p>Suporte técnico ágil e eficiente para seus equipamentos</p>
+                        </div>
+                        <div class="feature-box">
+                            <div class="feature-icon"><i class="fas fa-balance-scale-right"></i></div>
+                            <h3>Equipamentos Precisos</h3>
+                            <p>Balanças comerciais e relógios ponto informatizados</p>
+                        </div>
+                        <div class="feature-box">
+                            <div class="feature-icon"><i class="fas fa-print"></i></div>
+                            <h3>Impressão Profissional</h3>
+                            <p>Impressoras A4 e térmicas para cupons e etiquetas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Nossos Serviços Detalhados</h2>
+                    <p>Oferecemos um portfólio completo de soluções integradas para todas as necessidades de tecnologia da sua empresa, garantindo eficiência e inovação.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon"><i class="fas fa-cogs"></i></div>
+                            <h3>Revenda de Sistemas</h3>
+                        </div>
+                        <p>Implementação de sistemas ERP, PDV e CRM. Soluções personalizadas para otimizar a gestão do seu negócio.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon"><i class="fas fa-desktop"></i></div>
+                            <h3>Venda de Computadores</h3>
+                        </div>
+                        <p>Desktops, notebooks e workstations de alta performance. Configurações sob medida para suas necessidades.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon"><i class="fas fa-print"></i></div>
+                            <h3>Impressoras A4</h3>
+                        </div>
+                        <p>Venda e manutenção de impressoras a laser e jato de tinta para documentos e materiais corporativos.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon"><i class="fas fa-receipt"></i></div>
+                            <h3>Impressoras Térmicas</h3>
+                        </div>
+                        <p>Equipamentos para impressão de cupons fiscais (NFC-e, SAT), etiquetas e comprovantes com agilidade.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon"><i class="fas fa-balance-scale"></i></div>
+                            <h3>Balanças Digitais</h3>
+                        </div>
+                        <p>Balanças eletrônicas de precisão para comércio e indústria, com ou sem impressor integrado. Homologadas pelo INMETRO.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon"><i class="fas fa-user-clock"></i></div>
+                            <h3>Relógios Ponto</h3>
+                        </div>
+                        <p>Sistemas modernos de controle de ponto (REP) biométrico, por cartão ou facial. Adequados à portaria 671.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="about" class="about section">
+            <div class="container">
+                <div class="about-content-wrapper"> 
+                    <div class="about-text"> 
+                        <h2>Experiência e Confiabilidade que Fazem a Diferença</h2>
+                        <p>Com mais de uma década de atuação, a BRUMAQ se consolidou como referência em soluções tecnológicas, oferecendo desde a venda de equipamentos até a implementação de sistemas complexos para empresas de todos os portes.</p>
+                        <p>Nossa equipe técnica é altamente qualificada e está em constante atualização para garantir suporte completo, desde a consultoria na escolha do equipamento ideal até a manutenção preventiva e corretiva, assegurando a continuidade e eficiência do seu negócio.</p>
+                    </div>
+                    <div class="about-visual"> 
+                        <div class="about-card">
+                            <div class="about-card-icon"><i class="fas fa-bullseye"></i></div>
+                            <h4>Foco em Resultados</h4>
+                            <p>Soluções eficazes e personalizadas para o seu negócio prosperar.</p>
+                        </div>
+                        <div class="about-card">
+                            <div class="about-card-icon"><i class="fas fa-handshake"></i></div>
+                            <h4>Parceria Sólida</h4>
+                            <p>Construímos relacionamentos de confiança e duradouros.</p>
+                        </div>
+                        <div class="about-card">
+                            <div class="about-card-icon"><i class="fas fa-bolt"></i></div>
+                            <h4>Agilidade e Eficiência</h4>
+                            <p>Atendimento rápido e soluções implementadas com precisão.</p>
+                        </div>
+                        <div class="about-card">
+                            <div class="about-card-icon"><i class="fas fa-star"></i></div>
+                            <h4>Qualidade Garantida</h4>
+                            <p>Produtos e serviços de excelência, sempre visando o melhor.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="stats"> 
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="500" data-suffix="+">0+</span>
+                        <span class="stat-label">Clientes Satisfeitos</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="15" data-suffix="+">0+</span>
+                        <span class="stat-label">Anos de Experiência</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="1000" data-suffix="+">0+</span>
+                        <span class="stat-label">Projetos Concluídos</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="98" data-suffix="%">0%</span>
+                        <span class="stat-label">Índice de Satisfação</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Vamos Conversar?</h2>
+                    <p>Estamos prontos para atender sua empresa com as melhores soluções em tecnologia. Fale conosco e descubra como podemos ajudar seu negócio a crescer e se destacar no mercado.</p>
+                </div>
+                
+                <div class="contact-content">
+                    <div class="contact-info-block"> 
+                        <h2 class="contact-main-title">Informações de Contato</h2>
+                        <p class="intro">Nossa equipe está à disposição para esclarecer dúvidas, oferecer consultoria ou agendar uma demonstração de nossos produtos e serviços.</p>
+                        
+                        <h2 class="location-title">Localização</h2>
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.197025544057!2d-46.65683098502264!3d-23.56137098468276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59b70d8f7c3b%3A0x9db1de72f16e3e6!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1622492033311!5m2!1spt-BR!2sbr" 
+                                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                    <form class="contact-form" id="mainContactForm"> 
+                        <div class="form-group">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" id="name" name="name" required placeholder="Seu nome aqui">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" required placeholder="seu.email@exemplo.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone (Opcional)</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(XX) XXXXX-XXXX">
+                        </div>
+                         <div class="form-group">
+                            <label for="subject">Assunto</label>
+                            <input type="text" id="subject" name="subject" required placeholder="Ex: Orçamento para Sistema PDV">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" placeholder="Descreva sua necessidade ou dúvida..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Enviar Mensagem Agora</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+             <img src="./logo.png" alt="Logo BRUMAQ" class="footer-logo">
+            
+            <div class="footer-contact-cards-container">
+                <div class="footer-contact-card">
+                    <i class="fas fa-map-marker-alt main-icon"></i>
+                    <h4>Endereço</h4>
+                    <p>Rua da Tecnologia, 123 - Sala 45<br>Bairro Inovação, São Paulo - SP</p>
+                </div>
+                <div class="footer-contact-card">
+                    <i class="fas fa-phone-alt main-icon"></i>
+                    <h4>Telefone</h4>
+                    <p>(11) 9999-9999<br>(11) 4444-4444</p>
+                </div>
+                <div class="footer-contact-card">
+                    <i class="fas fa-envelope main-icon"></i>
+                    <h4>E-mail</h4>
+                    <p><a href="mailto:contato@brumaq.com.br">contato@brumaq.com.br</a></p>
+                </div>
+                <div class="footer-contact-card">
+                    <i class="fas fa-share-alt main-icon"></i> 
+                    <h4>Redes Sociais</h4>
+                    <p class="social-links">
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </p>
+                </div>
+            </div>
+
+            <p class="copyright-text">© <span id="current-year"></span> BRUMAQ. Todos os direitos reservados.</p>
+            <p class="footer-cnpj">CNPJ: 95.860.367/0001-91</p>
+            <br><hr>
+            <p class="copyright-text">Desenvolvido por <a href="mail:arthurmeiraprog@gmail.com" target="_blank" rel="noopener noreferrer">Arthur Meira</a></p>
+
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainHeader = document.getElementById('main-header');
+            const menuToggler = document.getElementById('mobile-menu-toggler');
+            const navMenu = document.getElementById('nav-menu-list');
+            const icon = menuToggler.querySelector('i');
+            const headerHeight = mainHeader ? mainHeader.offsetHeight : 80;
+
+            // Header Scroll Effect
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) { 
+                    if (mainHeader) mainHeader.classList.add('scrolled');
+                } else {
+                    if (mainHeader) mainHeader.classList.remove('scrolled');
+                }
+            });
+
+            // Mobile Menu Toggle
+            if (menuToggler && navMenu && icon) {
+                menuToggler.addEventListener('click', () => {
+                    const isExpanded = navMenu.classList.toggle('active');
+                    menuToggler.setAttribute('aria-expanded', isExpanded);
+                    if (isExpanded) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                        menuToggler.setAttribute('aria-label', 'Fechar menu');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                        menuToggler.setAttribute('aria-label', 'Abrir menu');
+                    }
+                });
+            }
+            
+            // Smooth scrolling for ALL internal links & Active Link Highlighting for Nav Menu
+            const internalLinks = document.querySelectorAll('a[href^="#"]'); 
+            const navMenuLinks = document.querySelectorAll('#main-header .nav-menu a.nav-link');
+
+
+            internalLinks.forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId && targetId.startsWith('#') && targetId.length > 1) {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            e.preventDefault(); 
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + (window.pageYOffset || document.documentElement.scrollTop) - headerHeight;
+                            
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+
+                            // Fecha o menu mobile se o link clicado for parte do menu mobile
+                            if (navMenu && navMenu.classList.contains('active') && this.closest('#nav-menu-list')) {
+                                navMenu.classList.remove('active');
+                                if (menuToggler) menuToggler.setAttribute('aria-expanded', 'false');
+                                if (icon) {
+                                    icon.classList.remove('fa-times');
+                                    icon.classList.add('fa-bars');
+                                }
+                                if (menuToggler) menuToggler.setAttribute('aria-label', 'Abrir menu');
+                            }
+                        }
+                    }
+                });
+            });
+            
+            function updateActiveLink() {
+                let currentSectionId = '';
+                const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+                document.querySelectorAll('section[id]').forEach(section => {
+                    const sectionTop = section.offsetTop - headerHeight - 100; 
+                    if (scrollPosition >= sectionTop) {
+                        currentSectionId = '#' + section.id;
+                    }
+                });
+
+                navMenuLinks.forEach(link => { 
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === currentSectionId) {
+                        link.classList.add('active');
+                    }
+                });
+
+                if ( (scrollPosition < headerHeight*2 && currentSectionId === "" ) || (scrollPosition === 0) ) {
+                     if (navMenuLinks.length > 0 && navMenuLinks[0].getAttribute('href') === "#home") {
+                        navMenuLinks.forEach(link => link.classList.remove('active'));
+                        navMenuLinks[0].classList.add('active');
+                    }
+                }
+            }
+            
+            window.addEventListener('scroll', updateActiveLink);
+            window.addEventListener('load', updateActiveLink); 
+
+            // Form submission
+            const contactForm = document.getElementById('mainContactForm');
+            if(contactForm) {
+                contactForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+                    event.target.reset();
+                });
+            }
+
+            // Stats counter animation
+            function animateCounter(element, target, suffix = '') {
+                let current = 0;
+                const duration = 1500; 
+                const incrementBase = Math.max(1, Math.floor(target / (duration / 25) ) );
+
+                const timer = setInterval(() => {
+                    current += incrementBase; 
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    element.textContent = Math.floor(current) + suffix;
+                }, 25); 
+            }
+
+            const statsObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const numbers = entry.target.querySelectorAll('.stat-number');
+                        numbers.forEach(num => {
+                            const target = parseInt(num.dataset.target);
+                            const suffix = num.dataset.suffix || '';
+                            if (!isNaN(target) && !num.classList.contains('is-animated')) {
+                                num.classList.add('is-animated'); 
+                                animateCounter(num, target, suffix);
+                            }
+                        });
+                    }
+                });
+            }, { threshold: 0.25 }); 
+
+            const statsSection = document.querySelector('.stats');
+            if (statsSection) {
+                statsObserver.observe(statsSection);
+            }
+
+            // Dynamic Year in Footer
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>
